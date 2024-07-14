@@ -5,7 +5,7 @@
 		<NuxtLink to="/dpv/create">Добавить ДПВ</NuxtLink>
 		<ul>
 			<li v-for="dpv in dpvList">
-				<a :href="`/dpv/${dpv.id}`" target="_blank">{{ dpv.name }}</a>
+				<a :href="`/api/dpv/${dpv.id}`" target="_blank">{{ dpv.name }}</a>
 			</li>
 		</ul>
 	</article>
