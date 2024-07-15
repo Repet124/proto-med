@@ -1,8 +1,11 @@
 <template>
 	<h1>Личный кабинет</h1>
-	<NuxtLink to="/pacients/my">Мои пациенты</NuxtLink>
-	<NuxtLink to="/pacients/all">Справочник пациентов</NuxtLink>
-	<NuxtLink to="/templates">Справочник пациентов</NuxtLink>
+	<nav>
+		<ul>
+			<li><NuxtLink to="/patients">Пациенты</NuxtLink></li>
+			<li><NuxtLink to="/templates">Шаблоны</NuxtLink></li>
+		</ul>
+	</nav>
 </template>
 
 <script setup>

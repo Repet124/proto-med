@@ -1,10 +1,10 @@
 <template>
 	<article>
-		<h3>Приём: {{ date }}</h3>
-		<p>{{ description }}</p>
-		<NuxtLink to="/dpv/create">Добавить ДПВ</NuxtLink>
+		<h3>Приём: {{ reception.date }}</h3>
+		<p>{{ reception.description }}</p>
+		<NuxtLink :to="`/patients/${patient.id}/receptions/${reception.id}/dpv/create`">Добавить ДПВ</NuxtLink>
 		<ul>
-			<li v-for="dpv in dpvList">
+			<li v-for="dpv in reception.dpvList">
 				<a :href="`/api/dpv/${dpv.id}`" target="_blank">{{ dpv.name }}</a>
 			</li>
 		</ul>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-	const [date, description, dpvList] = useProps(['reception'])
+	const {patient, reception} = defineProps(['patient','reception'])
 </script>
 
 <style scoped>

@@ -5,13 +5,13 @@
 	<h1>Список пациентов</h1>
 	<ul>
 		<li v-for="patient in patients">
-			<NuxtLink :to="`/patients/${patient.id}">{{ patient.lastName }} {{ patient.firstName }}</NuxtLink>
+			<NuxtLink :to="`/patients/${patient.id}`">{{ patient.lastName }} {{ patient.firstName }}</NuxtLink>
 		</li>
 	</ul>
 </template>
 
 <script setup>
-	const patients = await useFetch('/api/patients?doctor='+docktor.id);
+	const { data: patients } = await useFetch('/api/patients');
 </script>
 
 <style scoped>

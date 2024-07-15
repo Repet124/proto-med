@@ -7,12 +7,13 @@
 		Описание:
 		<textarea name="description" v-model="description"></textarea>
 	</label>
+	<DpvEditor v-bind="{patient}"/>
 </template>
 
 <script setup>
 	const id = useRoute().params.patient_id;
-	const date = useState('date', () => new Date());
-	const description = useState('description', () => '');
+	const date = useState(() => new Date());
+	const description = useState(() => '');
 
 	const patient = await useFetch(`/api/patients/${id}`);
 </script>
