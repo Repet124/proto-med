@@ -2,6 +2,7 @@
 <NuxtLayout>
 
 	<template #title>Личный кабинет</template>
+	<BackButton />
 	<h1 class="text-3xl">Меню</h1>
 	<Menu :list="menuList" />
 
