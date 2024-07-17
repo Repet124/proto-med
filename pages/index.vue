@@ -1,6 +1,9 @@
 <template>
-	<h1>Информационная система</h1>
+<NuxtLayout>
+
 	<NuxtLink to="/profile">Личный кабинет</NuxtLink>
+
+</NuxtLayout>
 </template>
 
 <script setup>
