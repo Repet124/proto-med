@@ -1,17 +1,19 @@
 <template>
-	<h1>Личный кабинет</h1>
+<NuxtLayout>
+
+	<template #title>Личный кабинет</template>
 	<nav>
-		<ul>
-			<li><NuxtLink to="/patients">Пациенты</NuxtLink></li>
-			<li><NuxtLink to="/templates">Шаблоны</NuxtLink></li>
-		</ul>
+		<Menu
+			:links="[
+				['Пациенты', '/patients'],
+				['Шаблоны', '/templates']
+			]"
+		/>
 	</nav>
+
+</NuxtLayout>
 </template>
 
 <script setup>
 	
 </script>
-
-<style scoped>
-	
-</style>
