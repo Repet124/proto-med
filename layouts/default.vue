@@ -9,17 +9,9 @@
 		</header>
 	</div>
 	
-	<div class="container">
+	<div class="container flex flex-col py-4 gap-4">
 		<slot />
 	</div>
 
 </div>
 </template>
-
-<script setup>
-	
-</script>
-
-<style scoped>
-	
-</style>

@@ -11,7 +11,10 @@ export default defineNuxtConfig({
           center: true,
           padding: '1rem'
         }
-      }
+      },
+      plugins: [
+        require('@tailwindcss/container-queries'),
+      ]
     }
   }
 })
