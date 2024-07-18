@@ -1,13 +1,25 @@
 <template>
+<NuxtLayout>
+
+	<template #title>Личный кабинет</template>
+	<BackButton />
+	<h1 class="text-3xl">Список пациентов</h1>
+
 	<label>
 		Только мои: <input type="checkbox" checked>
 	</label>
-	<h1>Список пациентов</h1>
 	<ul>
 		<li v-for="patient in patients">
-			<NuxtLink :to="`/patients/${patient.id}`">{{ patient.lastName }} {{ patient.firstName }}</NuxtLink>
+			<NuxtLink
+				:to="`/patients/${patient.id}`"
+				class="hover:text-slate-500"
+			>
+				- {{ patient.lastName }} {{ patient.firstName }}
+			</NuxtLink>
 		</li>
 	</ul>
+
+</NuxtLayout>
 </template>
 
 <script setup>
