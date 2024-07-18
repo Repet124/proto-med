@@ -9,7 +9,7 @@
 		</header>
 	</div>
 	
-	<div class="container flex flex-col py-4 gap-4">
+	<div class="container flex flex-col py-4 gap-4" :class="$attrs.container">
 		<slot />
 	</div>
 
