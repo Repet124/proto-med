@@ -1,15 +1,22 @@
 <template>
-	<h1>Пациент: {{ patient.name }}</h1>
-	<NuxtLink :to="`/patients/${id}/receptions/create`">Добваить новый приём</NuxtLink>
+<NuxtLayout>
+
+	<template #title>Личный кабинет</template>
+	<Btn type="back" />
+	<h1 class="text-3xl">Пациент: {{ patient.name }}</h1>
+
+	<Btn type="link" :to="`/patients/${id}/receptions/create`">Добваить новый приём</Btn>
 	<h2>Список приёмов</h2>
-	<ul>
+	<ul class="flex flex-col gap-4">
 		<li v-for="reception in patient.receptions">
-			<ReceptionItem v-bind="{
-				patient,
-				reception,
-			}"/>
+			<ReceptionItem
+				:patient="patient"
+				:reception="reception"
+			/>
 		</li>
 	</ul>
+
+</NuxtLayout>
 </template>
 
 <script setup>

@@ -8,8 +8,10 @@ export default defineEventHandler(async (event) => {
 		date: item.timestamp,
 		description: item.title,
 	}));
-	user.receptions.forEach(async item => {
-		item.dpvList = await $fetch('https://freetestapi.com/api/v1/posts?limit=5');
-	});
+
+	for (var i = 0; i < user.receptions.length; i++) {
+		user.receptions[i].dpvList = await $fetch('https://freetestapi.com/api/v1/posts?limit=5');
+	}
+	
 	return user;
 })
