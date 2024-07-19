@@ -1,8 +1,6 @@
 <template>
-<NuxtLayout>
+<NuxtLayout title="Справочник пациентов">
 
-	<template #title>Личный кабинет</template>
-	<Btn type="back" />
 	<h1 class="text-3xl">Список пациентов</h1>
 
 	<label>

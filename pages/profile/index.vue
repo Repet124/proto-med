@@ -1,8 +1,5 @@
 <template>
-<NuxtLayout>
-
-	<template #title>Личный кабинет</template>
-	<Btn type="back" />
+<NuxtLayout title="Личный кабинет">
 
 	<h1 class="text-3xl">Меню</h1>
 	<Menu :list="menuList" />

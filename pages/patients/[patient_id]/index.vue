@@ -1,8 +1,6 @@
 <template>
-<NuxtLayout :container="$style.layout">
+<NuxtLayout title="Карточка пациента" :container="$style.layout">
 
-	<template #title>Личный кабинет</template>
-	<Btn type="back" :class="$style.back"/>
 	<h1 class="font-bold text-3xl" :class="$style.h1">Пациент: {{ patient.name }}</h1>
 
 	<section class="bg-white p-2 border border-slate-600 rounded-md md:self-start" :class="$style.per">
