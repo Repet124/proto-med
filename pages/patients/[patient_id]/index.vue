@@ -1,5 +1,5 @@
 <template>
-<NuxtLayout title="Карточка пациента" :container="$style.layout">
+<NuxtLayout heading="Карточка пациента" :container="$style.layout">
 
 	<h1 class="font-bold text-3xl" :class="$style.h1">Пациент: {{ patient.name }}</h1>
 

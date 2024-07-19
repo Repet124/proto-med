@@ -1,4 +1,6 @@
 <template>
+<NuxtLayout heading="Создание приёма">
+
 	<h1>Создание нового приёма</h1>
 	<label>
 		Дата приёма: <input type="date" v-model="date">
@@ -8,6 +10,8 @@
 		<textarea name="description" v-model="description"></textarea>
 	</label>
 	<DpvEditor v-bind="{patient}"/>
+
+</NuxtLayout>
 </template>
 
 <script setup>

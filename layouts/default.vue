@@ -4,7 +4,7 @@
 	<div class="bg-slate-800 border-b border-slate-500">
 		<header class="container h-16 flex items-center">
 			<p class="text-white text-xl">
-				Информационная система{{ $attrs.title ? ': '+$attrs.title : ''}}
+				Информационная система{{ $attrs.heading ? ': '+$attrs.heading : ''}}
 			</p>
 		</header>
 	</div>

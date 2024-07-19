@@ -1,5 +1,5 @@
 <template>
-<NuxtLayout title="Справочник пациентов">
+<NuxtLayout heading="Справочник пациентов">
 
 	<h1 class="text-3xl">Список пациентов</h1>
 
