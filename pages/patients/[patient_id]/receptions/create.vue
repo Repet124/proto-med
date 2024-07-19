@@ -1,7 +1,6 @@
 <template>
 <NuxtLayout heading="Создание приёма">
 
-	<h1>Создание нового приёма</h1>
 	<label>
 		Дата приёма: <input type="date" v-model="date">
 	</label>

@@ -15,6 +15,7 @@
 	<div
 		v-else-if="template && template.type === 'legacy'"
 		v-html="template.content"
+		:class="$style.legacy_container"
 	></div>
 
 </template>
@@ -32,6 +33,11 @@
 	})
 </script>
 
-<style scoped>
-	
+<style scoped module>
+	.legacy_container {
+		* {
+			margin: 0 !important;
+			max-width: 100%;
+		}
+	}
 </style>
