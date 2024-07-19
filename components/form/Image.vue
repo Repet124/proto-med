@@ -3,14 +3,14 @@
 	<label class="form-label" for="sdlkfjsdaf">
 		<span class="form-title">{{ title }}</span>
 
-		<Modal
+		<!-- <Modal
 			v-if="displayLimitModal"
 			@close="displayLimitModal = false"
 			type="ok"
 			heading="Files limit"
 		>
 			You can to load only no more {{limit}} files
-		</Modal>
+		</Modal> -->
 
 		<input
 			hidden
@@ -47,7 +47,7 @@
 <script>
 
 import ImagePreview from './ImagePreview.vue';
-import Modal from '../Modal.vue';
+// import Modal from '../Modal.vue';
 
 
 export default {
@@ -128,7 +128,7 @@ export default {
 
 	components: {
 		ImagePreview,
-		Modal
+		// Modal
 	}
 }
 
