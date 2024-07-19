@@ -46,15 +46,13 @@
 	@media(min-width: 768px) {
 		.layout {
 			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-rows: 50px 50px auto;
+			grid-template-columns: repeat(2, 1fr);
 			grid-template-areas:
-				'back back h1 h1'
-				'list list per per';
+				'h1 h1'
+				'list per';
 		}
 	}
 
-	.back {grid-area: back;}
 	.h1 {grid-area: h1;}
 	.per {grid-area: per;}
 	.list {grid-area: list;}
