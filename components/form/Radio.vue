@@ -1,54 +1,44 @@
 <template>
-	
-	<label class="form-label">
-		<span class="form-title">{{ title }}</span>
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)">
 
-		<label
-			v-for="item in fields"
-			class="form-rad_check form-radio"
-			:class="{'form-radio_err': !!error}"
+	<label
+		v-for="[radioLabelText, radioVal] in fields"
+		class="flex items-center gap-2"
+		:class="{'text-red-600': !!error}"
+	>
+		<input
+			class="hidden"
+			type="radio"
+			:name="name"
+			:value="radioVal"
+			:checked="radioVal === model"
+			@change="model = radioVal"
 		>
-			<input
-				type="radio"
-				:name="name"
-				:value="item[1]"
-				:checked="item[1] === checked"
-				@change="$emit('update:modelValue', item[1])"
-			>
-			<i></i>
-			{{ item[0] }}
-		</label>
-		<span v-if="!!error" class="form-err">{{error}}</span>
+		<i
+			class="flex items-center justify-center w-5 h-5 border border-slate-600 rounded-full font-bold text-lg before:block before:content[''] before:w-3 before:h-3 before:bg-emerald-500 before:rounded-full before:transition"
+			:class="radioVal === model ? 'before:opacity-100' : 'before:opacity-0'"
+		></i>
+		{{ radioLabelText }}
 	</label>
-	
+	<span v-if="!!error" class="form-err">{{error}}</span>
+
+</FormLabel>
 </template>
 
-<script>
+<script setup lang="ts">
 
+	var { name, fields, label, error } = defineProps<{
+		name: string;
+		fields: ([number | string, any])[];
+		label?: string;
+		error?: string;
+	}>();
 
-export default {
+	var model = defineModel();
 
-	data() {
-		return {
-			checked: this.modelValue ? this.modelValue : this.fields[0][1]
-		}
-	},
-
-	props: {
-		modelValue: [String, Number],
-		error: String,
-
-		// fields from backend
-		name: String,
-		label: String,
-		fields: Array
-	},
-
-	computed: {
-		title() {
-			return this.label ? this.label : this.name.charAt(0).toUpperCase() + this.name.slice(1);
-		}
-	},
-}
+	function setDefaultModel() {
+		model.value = fields[0][1];
+	}
+	setDefaultModel();
 
 </script>

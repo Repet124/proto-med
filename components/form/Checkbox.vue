@@ -19,8 +19,10 @@
 		>
 
 		<i
-			class="flex items-center justify-center w-5 h-5 border border-slate-600 rounded-md transition text-white font-bold text-lg before:block before:-ml-1"
-			:class="{'bg-emerald-500 before:content-[\'✓\'] before:opacity-100': isChecked(checkboxVal)}"
+			class="flex items-center justify-center w-5 h-5 border border-slate-600 rounded-md transition text-white font-bold text-lg before:block before:-ml-1 before:content-['✓']"
+			:class="isChecked(checkboxVal)
+				? 'bg-emerald-500 before:opacity-100'
+				: 'before:opacity-0'"
 		></i>
 
 		{{ checkboxLabelText }}
@@ -33,7 +35,7 @@
 
 <script setup lang="ts">
 
-	var { name, feilds, label, error } = defineProps<{
+	defineProps<{
 		name: string;
 		fields: [number | string, any];
 		label?: string;
