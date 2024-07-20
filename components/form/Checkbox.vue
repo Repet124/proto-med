@@ -1,68 +1,55 @@
 <template>
-	
-	<label class="form-label">
-		<span class="form-title">{{ title }}</span>
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)">
 
-		<label
-			v-for="item in checkboxes"
-			class="form-rad_check form-checkbox"
-			:class="{'form-checkbox_err': !!error}"
+	<label
+		v-for="[checkboxLabelText, checkboxVal] in fields"
+		class="flex items-center gap-2"
+		:class="{'text-red-600': !!error}"
+	>
+		<input
+			class="hidden"
+			type="checkbox"
+			:name="name"
+			:value="checkboxVal"
+			:checked="isChecked(checkboxVal)"
+			@change="change(
+				checkboxVal,
+				$event.target.checked ? 'add' : 'delete'
+			)"
 		>
-			<input
-				type="checkbox"
-				:name="name"
-				:value="item[1]"
-				:checked="checkboxes.has(item[1])"
-				@change="change(item[1], $event.target.checked ? 'add' : 'delete')"
-			>
-			<i></i>
-			{{ item[0] }}
-		</label>
-		<span v-if="!!error" class="form-err">{{error}}</span>
+
+		<i
+			class="flex items-center justify-center w-5 h-5 border border-slate-600 rounded-md transition text-white font-bold text-lg before:block before:-ml-1"
+			:class="{'bg-emerald-500 before:content-[\'✓\'] before:opacity-100': isChecked(checkboxVal)}"
+		></i>
+
+		{{ checkboxLabelText }}
+
 	</label>
-	
+	<span v-if="!!error" class="form-err">{{error}}</span>
+
+</FormLabel>
 </template>
 
-<script>
+<script setup lang="ts">
 
+	var { name, feilds, label, error } = defineProps<{
+		name: string;
+		fields: [number | string, any];
+		label?: string;
+		error?: string;
+	}>();
 
-export default {
+	var model = defineModel({default: []});
+	var checked = computed(() => new Set(model.value));
 
-	data() {
-		return {
-			checked: this.modelValue ? this.modelValue : []
-		}
-	},
-
-	props: {
-		modelValue: Array,
-		error: String,
-
-		// fields from backend
-		name: String,
-		label: String,
-		fields: Array
-	},
-
-	computed: {
-		checkboxes() {
-			return new Set(this.fields);
-		},
-
-		title() {
-			return this.label ? this.label : this.name.charAt(0).toUpperCase() + this.name.slice(1);
-		}
-	},
-
-	methods: {
-		change(value, action) {
-
-			let newVal = new Set(this.checked);
-			newVal[action](value);
-			this.checked = Array.from(newVal);
-			this.$emit('update:modelValue', this.checked);
-		}
+	function isChecked(val) {
+		return checked.value.has(val);
 	}
-}
+
+	function change(value, action) {
+		checked.value[action](value);
+		model.value = Array.from(checked.value);
+	}
 
 </script>
