@@ -1,7 +1,7 @@
 <template>
 	<form
 		action="#"
-		class="flex flex-col gap-4"
+		class="flex flex-col gap-4 max-w-2xl"
 	>
 		<component v-for="field in fields"
 			:is="formComponents[field.component]"

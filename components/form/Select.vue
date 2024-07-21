@@ -1,26 +1,25 @@
 <template>
-	
-	<label class="form-label">
-		<span class="form-title">{{ title }}</span>
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)">
 
-		<select
-			class="form-input"
-			v-for="(item, index) in selected"
-			:name="name"
-			:value="item"
-			@change="change(index, $event.target.value)"
+	<select
+		v-for="(item, index) in selected"
+		class="w-full border border-slate-600 rounded-md px-2 py-1"
+		:class="{'text-red-600': !!error}"
+		:name="name"
+		:value="item"
+		@change="change(index, $event.target.value)"
+	>
+		<option
+			v-for="item in fields"
+			:value="item[1]"
 		>
-			<option
-				v-for="item in fields"
-				:value="item[1]"
-			>
-				{{ item[0] }}
-			</option>
-		</select>
+			{{ item[0] }}
+		</option>
+	</select>
 
-		<span v-if="!!error" class="form-err">{{ error }}</span>
-	</label>
-	
+	<span v-if="!!error" class="text-red-600">{{ error }}</span>
+
+</FormLabel>
 </template>
 
 <script>

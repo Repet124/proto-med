@@ -28,7 +28,7 @@
 		{{ checkboxLabelText }}
 
 	</label>
-	<span v-if="!!error" class="form-err">{{error}}</span>
+	<span v-if="!!error" class="text-red-600">{{error}}</span>
 
 </FormLabel>
 </template>
