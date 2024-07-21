@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 
-	var { name, fields, label, error } = defineProps<{
+	var { fields } = defineProps<{
 		name: string;
 		fields: ([number | string, any])[];
 		label?: string;
@@ -35,10 +35,6 @@
 	}>();
 
 	var model = defineModel();
-
-	function setDefaultModel() {
-		model.value = fields[0][1];
-	}
-	setDefaultModel();
+	model.value = fields[0][1];
 
 </script>
