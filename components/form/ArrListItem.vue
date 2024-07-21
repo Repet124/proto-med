@@ -12,7 +12,6 @@
 			type="btn"
 			size="sm"
 			:disabled="disabledDelete"
-			:class="{'btn-disabled': disabledDelete}"
 			@click="$emit('delete')"
 		>
 			Delete

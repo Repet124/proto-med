@@ -3,13 +3,14 @@
 	<component
 		:is="type === 'link' ? NuxtLink : 'button'"
 		:to="to"
+		:type="type === 'btn' ? 'button' : ''"
 		class="w-fit text-white  px-4 py-2 rounded-md transition"
 		:class="[
 			sizes[size],
 			disabled ? 'bg-gray-500' : 'bg-slate-800 hover:bg-slate-700'
 		]"
 		:disabled="disabled"
-		@click="type === 'back' ? useRouter().back() : $emit('click')"
+		@click="type === 'back' && useRouter().back()"
 	>
 		<slot>{{ type === 'back' ? 'Назад' : 'Кнопка' }}</slot>
 	</component>
@@ -28,7 +29,6 @@
 
 <script setup>
 	var NuxtLink = resolveComponent('NuxtLink');
-	
 	defineProps({
 		type: {
 			type: String,
