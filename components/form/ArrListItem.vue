@@ -1,28 +1,30 @@
 <template>
 
-	<div class="form-List-item">
-		<input class="form-input" placeholder="List item..." type="text" :value="val" @input="$emit('ch', $event.target.value)">
-		<button
-			type="button"
+	<div class="flex gap-2">
+		<input
+			class="w-full border border-slate-600 rounded-md px-2 py-1"
+			placeholder="List item..."
+			type="text"
+			:value="val"
+			@input="$emit('input', $event.target.value)"
+		>
+		<Btn
+			type="btn"
+			size="sm"
 			:disabled="disabledDelete"
 			:class="{'btn-disabled': disabledDelete}"
-			class="btn btn-danger material-symbols-outlined"
 			@click="$emit('delete')"
 		>
 			Delete
-		</button>
+		</Btn>
 	</div>
 
 </template>
 
-<script>
-
-export default {
-	emits: ['ch', 'delete'],
-	props: {
+<script setup>
+	defineEmits(['input', 'delete']);
+	defineProps({
 		val: String,
 		disabledDelete: Boolean
-	}
-}
-
+	});
 </script>
