@@ -11,7 +11,7 @@
 	>
 	<div v-if="model.length" class="flex gap-4 overflow-x-scroll">
 		<FormImagePreview
-			v-for="(image, index) in images"
+			v-for="(image, index) in model"
 			:src="imageSrc(image)"
 			@delete="imageRemove(index)"
 		/>
@@ -41,14 +41,15 @@
 		limit: Infinity
 	});
 
+	var input = useState();
 	var model = defineModel({default: []});
 
 	function imageAdd(images) {
 		model.value = [
 			...(model.value),
-			...(images.slice(0, limit - model.value.length))
+			...(Array.from(images).slice(0, limit - model.value.length))
 		];
-		$refs.input.value = null;
+		input.value = null;
 	}
 
 	function imageRemove(index) {

@@ -1,12 +1,12 @@
 <template>
 
-	<div class="relative flex items-center w-48 h-40 ">
+	<div class="relative flex items-center min-w-48 w-48 h-40 ">
 		<button
 			type="button"
-			class="absolute -top-4 -right-4 bg-red-600"
+			class="absolute top-0 right-0 w-6 h-6 bg-red-600 text-white hover:bg-red-400"
 			@click="$emit('delete')"
 		>
-			Delete
+			&#10008;
 		</button>
 		<img class="max-w-full max-h-full" :src="src">
 	</div>
