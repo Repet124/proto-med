@@ -1,18 +1,29 @@
 <template>
 
-	<div class="form-List-item">
-		<input class="form-input" placeholder="Name..." type="text" :value="name" @input="$emit('ch', [$event.target.value, value])">
+	<div class="flex gap-2 items-center">
+		<input
+			class="w-full border border-slate-600 rounded-md px-2 py-1"
+			placeholder="Name..."
+			type="text"
+			:value="name"
+			@input="$emit('ch', [$event.target.value, value])"
+		>
 		:
-		<input class="form-input" placeholder="Value..." type="text" :value="value" @input="$emit('ch', [name, $event.target.value])">
-		<button
-			type="button"
+		<input
+			class="w-full border border-slate-600 rounded-md px-2 py-1"
+			placeholder="Value..."
+			type="text"
+			:value="value"
+			@input="$emit('ch', [name, $event.target.value])"
+		>
+		<Btn
+			type="btn"
+			size="sm"
 			:disabled="disabledDelete"
-			:class="{'btn-disabled': disabledDelete}"
-			class="btn btn-danger material-symbols-outlined"
 			@click="$emit('delete')"
 		>
 			Delete
-		</button>
+		</Btn>
 	</div>
 
 </template>

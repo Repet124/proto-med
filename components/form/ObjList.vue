@@ -1,30 +1,27 @@
 <template>
-	
-	<label class="form-label" :class="{'form-input_err': !!error}">
-		<span class="form-title">{{ title }}</span>
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)">
 
-		<ObjListItem
-			v-for="(item, index) in list"
-			:name="item[0]"
-			:value="item[1]"
-			:disabledDelete="list.length === min"
-			@ch="changeItem(index, $event)"
-			@delete="delItem(index)"
-		/>
+	<FormObjListItem
+		v-for="(item, index) in list"
+		:name="item[0]"
+		:value="item[1]"
+		:disabledDelete="list.length === min"
+		@ch="changeItem(index, $event)"
+		@delete="delItem(index)"
+	/>
 
-		<button
-			:class="{'btn-disabled': list.length === max}"
-			:disabled="list.length === max"
-			@click="addItem"
-			type="button"
-			class="btn btn-info form-btn"
-		>
-			Add Item
-		</button>
+	<Btn
+		type="btn"
+		size="sm"
+		:disabled="list.length === max"
+		@click="addItem"
+	>
+		Add Item
+	</Btn>
 
-		<span v-if="!!error" class="form-err">{{error}}</span>
-	</label>
-	
+	<span v-if="!!error" class="form-err">{{error}}</span>
+
+</FormLabel>
 </template>
 
 <script>
