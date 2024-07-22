@@ -4,7 +4,8 @@
 	<textarea
 		:name="name"
 		class="w-full border border-slate-600 rounded-md px-2 py-1"
-		@input="$emit('update:modelValue', $event.target.value === '' ? null : $event.target.value)"
+		:placeholder="placeholder || 'Input you message...'"
+		@input="model = $event.target.value"
 		rows="5"
 	>
 		{{ modelValue }}
@@ -13,27 +14,15 @@
 </FormLabel>
 </template>
 
-<script>
+<script setup lang="ts">
 
+	defineProps<{
+		name: string;
+		label?: string;
+		error?: string;
+		placeholder?: string;
+	}>();
 
-export default {
-
-	props: {
-		modelValue: String,
-		error: String,
-
-		// fields from backend
-		name: String,
-		label: String,
-		type: String,
-		placeholder: String,
-	},
-
-	computed: {
-		title() {
-			return this.label ? this.label : this.name.charAt(0).toUpperCase() + this.name.slice(1);
-		}
-	}
-}
+	var model = defineModel('');
 
 </script>
