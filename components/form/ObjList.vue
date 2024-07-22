@@ -3,8 +3,7 @@
 
 	<FormObjListItem
 		v-for="(item, index) in model"
-		:name="item.name"
-		:value="item.val"
+		:row="item"
 		:disabledDelete="model.length === minCount"
 		@input="change(model => model[index] = $event)"
 		@delete="change(model => model.splice(index, 1))"
@@ -42,7 +41,7 @@
 	});
 
 	var model = defineModel();
-	model.value = Array(initCount).fill().map(() => {name:'', val:''});
+	model.value = Array(initCount).fill().map(() => ({name:'', val:''}));
 
 	function change(fnModelChange) {
 		var newModel = Array.from(model.value);

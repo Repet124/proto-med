@@ -5,16 +5,22 @@
 			class="w-full border border-slate-600 rounded-md px-2 py-1"
 			placeholder="Name..."
 			type="text"
-			:value="name"
-			@input="$emit('ch', [$event.target.value, value])"
+			:value="row.name"
+			@input="$emit('input', {
+				name: $event.target.value,
+				val: row.val
+			})"
 		>
 		:
 		<input
 			class="w-full border border-slate-600 rounded-md px-2 py-1"
 			placeholder="Value..."
 			type="text"
-			:value="value"
-			@input="$emit('ch', [name, $event.target.value])"
+			:value="row.val"
+			@input="$emit('input', {
+				name: row.name,
+				val: $event.target.value,
+			})"
 		>
 		<Btn
 			type="btn"
@@ -28,16 +34,12 @@
 
 </template>
 
-<script>
+<script setup lang="ts">
 
-export default {
-	emits: ['ch', 'delete'],
-	props: {
-		name: String,
-		value: String,
-		index: Number,
-		disabledDelete: Boolean
-	}
-}
+	defineEmits(['input', 'delete']);
+	defineProps<{
+		row: {name: string, val: string};
+		disabledDelete: boolean;
+	}>();
 
 </script>
