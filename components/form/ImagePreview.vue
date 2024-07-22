@@ -13,13 +13,7 @@
 
 </template>
 
-<script>
-
-export default {
-
-	props: {
-		src: String
-	}
-}
-
+<script setup>
+	defineEmits(['delete']);
+	defineProps(['src']);
 </script>

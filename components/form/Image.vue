@@ -1,5 +1,5 @@
 <template>
-<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)" :error="error">
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)" :error="error" for="">
 
 	<input
 		hidden
@@ -53,7 +53,9 @@
 	}
 
 	function imageRemove(index) {
-		model.value = Array.from(model.value).splice(index, 1);
+		var arr = Array.from(model.value);
+		arr.splice(index, 1)
+		model.value = arr;
 	}
 
 	function imageSrc(image) {
