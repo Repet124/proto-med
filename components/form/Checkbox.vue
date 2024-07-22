@@ -1,5 +1,5 @@
 <template>
-<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)">
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)" :error="error">
 
 	<label
 		v-for="[checkboxLabelText, checkboxVal] in fields"
@@ -28,7 +28,6 @@
 		{{ checkboxLabelText }}
 
 	</label>
-	<span v-if="!!error" class="text-red-600">{{error}}</span>
 
 </FormLabel>
 </template>

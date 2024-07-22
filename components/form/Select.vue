@@ -1,5 +1,5 @@
 <template>
-<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)">
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)" :error="error">
 
 	<select
 		v-for="index in count"
@@ -16,8 +16,6 @@
 			{{ selectText }}
 		</option>
 	</select>
-
-	<span v-if="!!error" class="text-red-600">{{ error }}</span>
 
 </FormLabel>
 </template>

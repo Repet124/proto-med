@@ -1,41 +1,28 @@
 <template>
-<FormLabel :title="title">
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)" :error="error">
 
-		<input
-			class="w-full border border-slate-600 rounded-md px-2 py-1"
-			:class="{'text-red-600': !!error}"
-			:type="type ? type : 'text'"
-			:name="name"
-			:placeholder="placeholder ? placeholder : 'Type new value...'"
-			:value="modelValue"
-			@input="$emit('update:modelValue', $event.target.value === '' ? null : $event.target.value)"
-		>
-		<span v-if="!!error" class="text-red-600">{{ error }}</span>
+	<input
+		class="w-full border border-slate-600 rounded-md px-2 py-1"
+		:class="{'text-red-600': !!error}"
+		:type="type || 'text'"
+		:name="name"
+		:placeholder="placeholder || 'Type new value...'"
+		:value="model"
+		@input="model = $event.target.value"
+	>
 
 </FormLabel>
 </template>
 
-<script>
+<script setup lang="ts">
 
-
-export default {
-
-	props: {
-		modelValue: [String, Number],
-		error: String,
-
-		// fields from backend
-		name: String,
-		label: String,
-		type: String,
-		placeholder: String,
-	},
-
-	computed: {
-		title() {
-			return this.label ? this.label : this.name.charAt(0).toUpperCase() + this.name.slice(1);
-		}
-	}
-}
+	defineProps<{
+		name: string;
+		label?: string;
+		error?: string;
+		type?: string;
+		placeholder?: string;
+	}>();
+	var model = defineModel('');
 
 </script>

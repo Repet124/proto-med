@@ -1,18 +1,16 @@
 <template>
-	
-	<label class="form-label">
-		<span class="form-title">{{ title }}</span>
+<FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)" :error="error">
 
-		<textarea
-			:name="name"
-			class="form-input"
-			@input="$emit('update:modelValue', $event.target.value === '' ? null : $event.target.value)"
-			rows="5"
-		>{{ modelValue }}</textarea>
-		
-		<span v-if="!!error" class="form-err">{{error}}</span>
-	</label>
-	
+	<textarea
+		:name="name"
+		class="w-full border border-slate-600 rounded-md px-2 py-1"
+		@input="$emit('update:modelValue', $event.target.value === '' ? null : $event.target.value)"
+		rows="5"
+	>
+		{{ modelValue }}
+	</textarea>
+
+</FormLabel>
 </template>
 
 <script>
