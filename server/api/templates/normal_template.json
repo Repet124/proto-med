@@ -1,0 +1,66 @@
+[
+	{
+		"name": "name",
+		"component": "Input",
+		"label": "Input Label"
+	},
+	{
+		"name": "image",
+		"component": "Image",
+		"label": "Image Label"
+	},
+	{
+		"name": "checks",
+		"component": "Checkbox",
+		"label": "Checks Label",
+		"fields": [
+			["Tag name 1", 1],
+			["Tag name 2", "test"],
+			["testtest", 432]
+		]
+	},
+	{
+		"name": "rad",
+		"component": "Radio",
+		"label": "Radio Label",
+		"fields": [
+			["Tag name 1", 1],
+			["Tag name 2", "test"],
+			["testtest", 432]
+		]
+	},
+	{
+		"name": "select",
+		"component": "Select",
+		"label": "Select Label",
+		"count": 2,
+		"fields":[
+			["selete1", 1],
+			["select2", 2],
+			["testtest", 432]
+		]
+	},
+	{
+		"name": "list",
+		"component": "ArrList",
+		"label": "List Label",
+		"max": 7,
+		"min": 3,
+		"default": 5
+	},
+	{
+		"name": "Obj",
+		"component": "ObjList",
+		"label": "Obj Label",
+		"count": {
+			"max": 7,
+			"min": 3,
+			"default": 5
+		}
+	},
+	{
+		"name": "textarea",
+		"component": "Textarea",
+		"label": "Text Label"
+	}
+]

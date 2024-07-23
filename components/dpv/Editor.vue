@@ -1,5 +1,5 @@
 <template>
-	<h1>Создание ДПВ</h1>
+	<h2>Создание ДПВ</h2>
 	<p>Шаблон: {{ template ? template.name : ''}}</p>
 
 	<select v-model="selectedTemplate">
@@ -7,10 +7,11 @@
 		<option v-for="templateItem in templates" :value="templateItem">{{ templateItem.name }}</option>
 	</select>
 
-	<component
+	<Form
 		v-if="template && template.type !== 'legacy'"
-		:is="template.componentName"
-	></component>
+		action="/api/dvp"
+		:fields="template.content"
+	></Form>
 
 	<div
 		v-else-if="template && template.type === 'legacy'"
@@ -21,7 +22,7 @@
 </template>
 
 <script setup>
-	const {patient, reception} = defineProps(['patient', 'reception']);
+
 	const {data: templates} = await useFetch(`/api/templates`);
 
 	const template = useState();
