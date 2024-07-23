@@ -9,7 +9,9 @@
 		<textarea name="description" v-model="description"></textarea>
 	</label>
 	<DpvEditor v-bind="{patient}"/> -->
-	<Form :fields="fields"/>
+	<Form
+		action="/api/dvp"
+		:fields="fields"/>
 
 </NuxtLayout>
 </template>

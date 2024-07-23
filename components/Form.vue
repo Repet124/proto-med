@@ -9,6 +9,12 @@
 			v-model="data[field.name]"
 		/>
 	</form>
+	<Btn
+		type="btn"
+		@click="send()"
+	>
+		Create
+	</Btn>
 </template>
 
 <script setup>
@@ -23,10 +29,23 @@
 		Textarea: resolveComponent('FormTextarea'),
 	};
 
-	var { fields } = defineProps({
+	var showMessage = inject('message');
+	var data = reactive({});
+	var { action, fields } = defineProps({
+		action: String,
 		fields: Array,
 	});
 
-	var data = reactive({});
+	function send() {
+		var formData = new FormData();
+		for (var [name, val] of Object.entries(data)) {
+			if (!(val[0] instanceof File) && (val instanceof Object)) {
+				val = JSON.stringify(val);
+			}
+			formData.set(name, val);
+		}
+		$fetch(action, {method: 'POST', body: formData})
+			.then(showMessage);
+	}
 
 </script>

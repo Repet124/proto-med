@@ -9,7 +9,14 @@
 		</header>
 	</div>
 
-	<div v-if="useRoute().name !== 'index'" class="container">
+	<p
+		class="fixed top-4 bg-emerald-400 text-white transition p-4"
+		:class="message ? 'right-0':'right-full '"
+	>
+		{{ message }}
+	</p>
+
+	<div v-if="useRoute().name !== 'index'" class="container gap-4">
 		<Btn type="back"></Btn>
 	</div>
 
@@ -19,3 +26,14 @@
 
 </div>
 </template>
+
+<script setup>
+	provide('message', showMessage);
+
+	var message = useState();
+
+	function showMessage(text) {
+		message.value = text;
+		setTimeout(() => message.value = '', 3000);
+	}
+</script>
