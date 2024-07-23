@@ -10,8 +10,8 @@
 	</div>
 
 	<p
-		class="fixed top-4 bg-emerald-400 text-white transition p-4"
-		:class="message ? 'right-0':'right-full '"
+		class="fixed top-4 bg-emerald-400 text-white p-4 right-0 opacity-0 transition duration-300"
+		:class="{'!opacity-100': isShow}"
 	>
 		{{ message }}
 	</p>
@@ -31,9 +31,11 @@
 	provide('message', showMessage);
 
 	var message = useState();
+	var isShow = useState();
 
 	function showMessage(text) {
 		message.value = text;
-		setTimeout(() => message.value = '', 3000);
+		isShow.value = true;
+		setTimeout(() => isShow.value = false, 3000);
 	}
 </script>

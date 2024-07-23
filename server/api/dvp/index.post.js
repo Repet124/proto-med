@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
 	const body = await readBody(event);
-	console.log(body)
-	return 'qwe';
+	// логика валидации и отправки данных на backend
+	return 'ДПВ создан';
 });
