@@ -7,9 +7,7 @@
 		:placeholder="placeholder || 'Input you message...'"
 		@input="model = $event.target.value"
 		rows="5"
-	>
-		{{ modelValue }}
-	</textarea>
+	>{{ model }}</textarea>
 
 </FormLabel>
 </template>
@@ -23,6 +21,6 @@
 		placeholder?: string;
 	}>();
 
-	var model = defineModel('');
+	var model = defineModel({default:''});
 
 </script>

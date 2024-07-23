@@ -23,6 +23,6 @@
 		type?: string;
 		placeholder?: string;
 	}>();
-	var model = defineModel('');
+	var model = defineModel({default:''});
 
 </script>

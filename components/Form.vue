@@ -1,23 +1,17 @@
 <template>
 	<form
-		action="#"
 		class="flex flex-col gap-4 max-w-2xl"
+		@submit.prevent
 	>
 		<component v-for="field in fields"
 			:is="formComponents[field.component]"
 			v-bind="field"
+			v-model="data[field.name]"
 		/>
 	</form>
 </template>
 
 <script setup>
-	// v-model="form[field.name]"
-	// :error="errors[field.name]"
-
-	var {fields} = defineProps({
-		fields: Array
-	});
-
 	var formComponents = {
 		Input: resolveComponent('FormInput'),
 		Image: resolveComponent('FormImage'),
@@ -28,5 +22,11 @@
 		ObjList: resolveComponent('FormObjList'),
 		Textarea: resolveComponent('FormTextarea'),
 	};
+
+	var { fields } = defineProps({
+		fields: Array,
+	});
+
+	var data = reactive({});
 
 </script>

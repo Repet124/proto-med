@@ -38,7 +38,7 @@
 		initCount: 3,
 	});
 
-	var model = defineModel();
+	var model = defineModel({default:[{name:'', val:''}]});
 	model.value = Array(initCount).fill().map(() => ({name:'', val:''}));
 
 	function change(fnModelChange) {

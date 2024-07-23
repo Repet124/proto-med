@@ -2,12 +2,11 @@
 <FormLabel :title="label || name.charAt(0).toUpperCase() + name.slice(1)" :error="error">
 
 	<select
-		v-for="index in count"
+		v-for="(,index) in count"
 		class="w-full border border-slate-600 rounded-md px-2 py-1"
 		:class="{'text-red-600': !!error}"
 		:name="name"
-		:value="model[index]"
-		@change="model[index] = $event.target.value"
+		@change="change(index, $event.target.value)"
 	>
 		<option
 			v-for="[selectText, selectVal] in fields"
@@ -34,7 +33,13 @@
 		count: 1
 	});
 
-	var model = defineModel();
+	var model = defineModel({default: ['']});
 	model.value = Array(count).fill(fields[0][1]);
+
+	function change(index, val) {
+		var arr = Array.from(model.value);
+		arr[index] = val;
+		model.value = arr;
+	}
 
 </script>

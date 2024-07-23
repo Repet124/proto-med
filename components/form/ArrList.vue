@@ -38,7 +38,7 @@
 		initCount: 3,
 	});
 
-	var model = defineModel();
+	var model = defineModel({default:['']});
 	model.value = Array(initCount).fill('');
 
 	function change(fnModelChange) {
